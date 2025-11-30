@@ -185,16 +185,54 @@ export default function DeedsPage() {
             <table className="data-table">
               <thead>
                 <tr>
-                  <th>إجراءات</th>
                   <th>رقم الصك</th>
-                  <th>المالك</th>
-                  <th>الحي</th>
+                  <th>التاريخ</th>
+                  <th>المصدر</th>
                   <th>المساحة</th>
+                  <th>المالك</th>
+                  <th>رقم القطعة</th>
+                  <th>رقم المخطط</th>
+                  <th>الحي</th>
+                  <th>البلدية</th>
+                  <th>الشارع</th>
+                  <th>المدينة</th>
+                  <th>حالة العقار</th>
+                  <th>نوع البناء</th>
+                  <th>نظام البناء</th>
+                  <th>عدد الادوار</th>
+                  <th>الحد الشمالي</th>
+                  <th>الحد الشرقي</th>
+                  <th>الحد الجنوبي</th>
+                  <th>الحد الغربي</th>
+                  <th>إجراءات</th>
                 </tr>
               </thead>
               <tbody>
+                
                 {rows.map((row) => (
                   <tr key={row._id}>
+                    
+                    <td>{row.deedNumber}</td>
+                    <td>{row.deedDate.split("T")[0]}</td>
+                    <td>{row.source}</td>
+                    <td>{row.area}</td>
+                    <td>{row.ownerName}</td>
+                    <td>{row.pieceNumber}</td>
+                    <td>{row.planNumber}</td>
+                    <td>{row.district}</td>
+                    <td>{row.municipality}</td>
+                    <td>{row.street}</td>
+                    <td>{row.city}</td>
+                    <td>{row.propertyStatus}</td>
+                    <td>{row.buildingType}</td>
+                    <td>{row.buildingSystem}</td>
+                    <td>{row.floorsCount}</td>
+                    <td>{row.northBoundary}</td>
+                    <td>{row.eastBoundary}</td>
+                    <td>{row.southBoundary}</td>
+                    <td>{row.westBoundary}</td>
+
+
                     <td>
                       <button
                         className="btn"
@@ -210,10 +248,6 @@ export default function DeedsPage() {
                         حذف
                       </button>
                     </td>
-                    <td>{row.deedNumber}</td>
-                    <td>{row.ownerName}</td>
-                    <td>{row.district}</td>
-                    <td>{row.area}</td>
                   </tr>
                 ))}
               </tbody>

@@ -30,9 +30,9 @@ export default function PaymentsPage() {
         api.get('/owners', { params: { page: 1, limit: 1000 } })
       ]);
 
-      const contractsDocs = contractsRes.data?.data?.docs || [];
-      const deedsDocs = deedsRes.data?.data?.docs || [];
-      const ownersDocs = ownersRes.data?.data?.docs || [];
+      const contractsDocs = contractsRes.data?.data || [];
+      const deedsDocs = deedsRes.data?.data || [];
+      const ownersDocs = ownersRes.data?.data || [];
 
       const deedsMap = new Map(deedsDocs.map((d) => [d._id, d]));
       const ownersMap = new Map(ownersDocs.map((o) => [o._id, o]));

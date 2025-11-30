@@ -31,7 +31,7 @@ export default function OwnersPage() {
       const res = await api.get('/owners', { params: { page, limit } });
 
       // الريسبونس الصحيح:
-      const payload = res.data?.data?.owners || [];
+      const payload = res.data?.data || [];
 
       let docs = payload;
 
@@ -58,8 +58,8 @@ export default function OwnersPage() {
       }));
 
       setRows(normalized);
-      setTotal(res.data.results || normalized.length);
-      setPages(Math.ceil((res.data.results || 1) / limit));
+      setTotal(res.data.total || normalized.length);
+      setPages(Math.ceil((res.data.pages || 1) / limit));
 
     } catch (err) {
       console.error('Owners load error', err);

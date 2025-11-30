@@ -47,7 +47,7 @@ class APIFeatures {
   // 3) Pagination
   paginate() {
     const page = this.queryUrl.page * 1 || 1; // convert to number
-    const limit = this.queryUrl.limit * 1 || 100; // convert to number
+    const limit = this.queryUrl.limit * 1 || 20; // convert to number
     const skip = (page - 1) * limit;
 
     // if page field existing the page or limit must be greater than 0

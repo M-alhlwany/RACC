@@ -7,15 +7,17 @@ const deedSchema = new mongoose.Schema({
     required: [true, 'رقم الصك مطلوب'],
     unique: true,
   },
+
   deedDate: String,
   source: String,
-
   area: Number,
 
-  ownerName: {
+  // ♦ الربط الجديد عبر ownerID بدلاً من _id
+  ownerID: {
     type: String,
-    required: true,
+    required: true
   },
+
   pieceNumber: String,
   planNumber: String,
   district: String,
@@ -25,6 +27,7 @@ const deedSchema = new mongoose.Schema({
     type: String,
     default: 'jeddah',
   },
+
   propertyStatus: String,
   buildingType: String,
   buildingSystem: String,
@@ -37,7 +40,7 @@ const deedSchema = new mongoose.Schema({
 
   districtCorrection: String,
 
-  // (**الجديد**) صك واحد يمكنه الارتباط بعدة عقود
+  // صك ← عدة عقود
   contracts: [
     {
       type: mongoose.Schema.ObjectId,
@@ -45,16 +48,35 @@ const deedSchema = new mongoose.Schema({
     },
   ],
 
-  createdAt: { type: Date, default: Date.now },
-},
-  {
-    timestamps: true
+}, {
+  timestamps: true,
+  toJSON: { virtuals: true },
+  toObject: { virtuals: true }
+});
+
+
+// -------------------------------
+//   VIRTUAL POPULATE: Owner
+// -------------------------------
+deedSchema.virtual('owner', {
+  ref: 'Owner',          // الموديل الهدف
+  localField: 'ownerID', // ما بداخل الصك
+  foreignField: 'ownerID', // ما بداخل المالك
+  justOne: true
+});
+
+
+// -------------------------------
+//  Auto Populate للمالك
+// -------------------------------
+deedSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: 'owner',
+    select: 'ownerName ownerMobile ownerID'
   });
 
-// Populate owner automatically on any find
+  next();
+});
 
-// deedSchema.pre('find' , ()=>{
-
-// })
 
 module.exports = mongoose.model('Deed', deedSchema);
