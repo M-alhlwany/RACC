@@ -1,0 +1,29 @@
+# توحيد نهاية السطر إلى LF لجميع الملفات النصية
+* text eol=lf
+
+# تأكد أن ملفات الجافاسكريبت تستخدم LF
+*.js text eol=lf
+*.ts text eol=lf
+
+# ملفات التكوين
+*.json text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.md text eol=lf
+*.html text eol=lf
+*.css text eol=lf
+*.scss text eol=lf
+*.env text eol=lf
+
+# لا تعيد تنسيق الملفات الثنائية
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.zip binary
+*.exe binary
+*.pdf binary
+
+# تجاهل node_modules من التهيئة
+node_modules/* -text

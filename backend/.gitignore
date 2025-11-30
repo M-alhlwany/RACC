@@ -1,0 +1,4 @@
+node_modules/
+*.env
+theory-lectures.pdf
+.cache/

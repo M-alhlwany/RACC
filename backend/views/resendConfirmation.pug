@@ -1,0 +1,12 @@
+extends base
+
+block content
+  .container
+    h2 تم إنشاء حسابك بنجاح ✅
+    p الرجاء التوجه إلى بريدك الإلكتروني #{firstName} لتفعيل حسابك.
+    p إذا لم تصلك الرسالة، يمكنك إعادة إرسالها.
+    form(action="/resend-confirmation", method="POST")
+      input(type="hidden", name="email", value="tour.name")
+      button(type="submit") إعادة إرسال رسالة التفعيل
+    if message
+      p(style="color:green; margin-top:10px") #{message}
