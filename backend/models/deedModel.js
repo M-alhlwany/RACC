@@ -13,13 +13,13 @@ const deedSchema = new mongoose.Schema({
   area: Number,
 
   // ♦ الربط الجديد عبر ownerID بدلاً من _id
-  ownerID: {
-    type: String,
-    required: true
-  },
-
-  pieceNumber: String,
-  planNumber: String,
+owner: {
+  type: mongoose.Schema.ObjectId,
+  ref: 'Owner'
+}
+,
+  parcel: String,
+  plan: String,
   district: String,
   municipality: String,
   street: String,
@@ -58,12 +58,7 @@ const deedSchema = new mongoose.Schema({
 // -------------------------------
 //   VIRTUAL POPULATE: Owner
 // -------------------------------
-deedSchema.virtual('owner', {
-  ref: 'Owner',          // الموديل الهدف
-  localField: 'ownerID', // ما بداخل الصك
-  foreignField: 'ownerID', // ما بداخل المالك
-  justOne: true
-});
+
 
 
 // -------------------------------

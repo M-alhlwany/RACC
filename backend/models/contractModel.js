@@ -12,22 +12,13 @@ const contractSchema = new mongoose.Schema(
 
     deed: {
       type: mongoose.Schema.ObjectId,
-      ref: 'Deed'
-    },
-
-    deedNumber: {
-      type: String,
-      required: [true, 'يجب ربط العقد بصك']
+      ref: 'Deed',
+      required: [true, 'يجب ربط صك بالعقد']
     },
 
     workScope: {
       type: String,
       required: [true, 'يجب تحديد نطاق العمل']
-    },
-
-    owner: {
-      type: mongoose.Schema.ObjectId,
-      ref: 'Owner'
     },
 
     contractValue: {
@@ -39,8 +30,11 @@ const contractSchema = new mongoose.Schema(
       type: Date,
       default: Date.now
     },
+    contract_link: String,
+    output_link: String,
 
     notes: String,
+    belongsTo: String,
 
     createdAt: {
       type: Date,
@@ -70,6 +64,15 @@ contractSchema.pre('save', async function (next) {
   const serial = counter.seq.toString().padStart(6, '0');
 
   this.projectCode = `PO-${y}${m}${d}-${serial}`;
+  next();
+});
+
+contractSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: 'deed',
+    select: 'deedNumber district parcel plan'
+  });
+
   next();
 });
 

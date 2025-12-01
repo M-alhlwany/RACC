@@ -8,11 +8,10 @@ const ownerSchema = new mongoose.Schema({
   },
 
   ownerID: {
-    type: String,
+    type: Number,
     required: true,
-    unique: true,
   },
-  ownerMobile: String,
+  ownerMobile: Number,
   ownerBirthDay: Date,
   ownerEmail: String,
 
@@ -21,7 +20,7 @@ const ownerSchema = new mongoose.Schema({
     default: false,
   },
 
-  agentID: String,
+  agentID: Number,
   agencyNumber: String,
   createdAt: {
     type: Date,

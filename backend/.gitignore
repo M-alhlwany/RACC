@@ -1,4 +1,6 @@
 node_modules/
+dev-data2/
+views/
 *.env
 theory-lectures.pdf
 .cache/

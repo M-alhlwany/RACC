@@ -31,7 +31,7 @@ router
 
 router
   .route('/:id')
-  .get(contractController.getContractDeep) // populate المتقدم
+  .get(contractController.getContract) // populate المتقدم
   .patch(contractController.updateContract)
   .delete(contractController.deleteContract);
 

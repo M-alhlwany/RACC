@@ -17,18 +17,13 @@ exports.createDeed = catchAsync(async (req, res, next) => {
 exports.getAllDeeds = factory.getAll(Deed);
 
 // Get single deed
-exports.getDeed = catchAsync(async (req, res, next) => {
-  const deed = await Deed.findById(req.params.id).populate('contracts');
+exports.getDeed = factory.getOne(Deed)
 
-  if (!deed) {
-    return next(new AppError('لا يوجد صك بهذا الرقم', 404));
-  }
+// Update deed
+exports.updateDeed = factory.updateOne(Deed)
 
-  res.status(200).json({
-    status: 'success',
-    data: { deed },
-  });
-});
+// Delete deed
+exports.deleteDeed = factory.deleteOne(Deed)
 
 // Get single deed by DeedNumber
 exports.getDeedByDeedNumber = catchAsync(async (req, res, next) => {
@@ -47,36 +42,5 @@ exports.getDeedByDeedNumber = catchAsync(async (req, res, next) => {
   res.status(200).json({
     status: 'success',
     data: { deed },
-  });
-});
-
-// Update deed
-exports.updateDeed = catchAsync(async (req, res, next) => {
-  const deed = await Deed.findByIdAndUpdate(req.params.id, req.body, {
-    new: true,
-    runValidators: true,
-  });
-
-  if (!deed) {
-    return next(new AppError('لا يوجد صك بهذا الرقم', 404));
-  }
-
-  res.status(200).json({
-    status: 'success',
-    data: { deed },
-  });
-});
-
-// Delete deed
-exports.deleteDeed = catchAsync(async (req, res, next) => {
-  const deed = await Deed.findByIdAndDelete(req.params.id);
-
-  if (!deed) {
-    return next(new AppError('لا يوجد صك بهذا الرقم', 404));
-  }
-
-  res.status(204).json({
-    status: 'success',
-    data: null,
   });
 });

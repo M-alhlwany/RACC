@@ -22,7 +22,8 @@ const paymentSchema = new mongoose.Schema({
 
   paymentNumber: Number, // دفعة رقم
 
-  amount: Number, // المدفوع
+  amount: Number, // المبلغ
+  paid: Number, // المدفوع
   previous: Number, // السابق
   remaining: Number, // المتبقي
 
