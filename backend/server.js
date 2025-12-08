@@ -1,4 +1,7 @@
 const mongoose = require('mongoose');
+
+const cors = require("cors");
+
 const dotEnv = require('dotenv');
 process.on('uncaughtException', (err) => {
   console.log('UNCAUGHT EXCEPTION 💥 Shutting down...');
@@ -7,6 +10,7 @@ process.on('uncaughtException', (err) => {
 });
 dotEnv.config({ path: './config.env' });
 const app = require('./app');
+app.use(cors({ origin: "http://localhost:3000" }));
 
 const DB = process.env.DB_URL.replace('<PASSWOR>', process.env.DB_PASSWORD);
 

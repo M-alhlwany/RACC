@@ -9,30 +9,20 @@ const recordSchema = new mongoose.Schema(
       ref: 'Contract',
       required: [true, 'يجب ربط السجل بعقد'],
     },
-
-    // عنوان السجل (مثال: رفع مساحي / تم إرسال المعاملة / طلب مرفوض)
-    title: {
-      type: String,
-      required: [true, 'يجب كتابة عنوان للسجل'],
-    },
+    recordNumber: Number,
 
     // حالة السجل
-    status: {
+    currentState: {
       type: String,
       enum: ['new', 'processing', 'done', 'rejected'],
       default: 'new',
     },
-
-    // وصف إضافي
-    description: {
+    previousState: {
       type: String,
+      default: '',
     },
-
-    // رابط ملف (اختياري)
-    fileUrl: {
-      type: String,
-    },
-
+    notes: String,
+    recordDate: Date,
     createdAt: {
       type: Date,
       default: Date.now,

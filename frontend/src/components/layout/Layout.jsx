@@ -5,7 +5,8 @@ const menu = [
   { to: '/deeds', label: 'إدارة الصكوك' },
   { to: '/owners', label: 'الملاك' },
   { to: '/contracts', label: 'العقود' },
-  { to: '/payments', label: 'المدفوعات' }
+  { to: '/payments', label: 'المدفوعات' },
+  { to: '/gis', label: 'البحث الجغرافي GIS' }
 ];
 
 export default function Layout({ children }) {

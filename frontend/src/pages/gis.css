@@ -1,0 +1,109 @@
+.gis-page {
+  padding: 20px;
+}
+
+.gis-tools {
+  padding: 15px;
+  margin-bottom: 15px;
+  background: white;
+  border-radius: 10px;
+}
+
+.search-row {
+  display: flex;
+  gap: 10px;
+}
+
+.search-row input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.suggest-box {
+  margin-top: 10px;
+  padding: 10px;
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.filters select {
+  padding: 6px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.suggest-item {
+  padding: 8px;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+}
+
+.suggest-item:hover {
+  background: #f0f0f0;
+}
+
+.map-container {
+  margin-top: 20px;
+  height: 70vh;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.suggest-box {
+  margin-top: 10px;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 10px;
+  padding: 10px;
+}
+.suggest-item {
+  padding: 8px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+}
+.suggest-item:hover {
+  background: #f4f4f4;
+}
+.filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.dropdown-list {
+  position: absolute;
+  top: 36px;
+  width: 100%;
+  background: white;
+  border: 1px solid #ddd;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 9999;
+  border-radius: 4px;
+}
+
+.dropdown-item {
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background: #efefef;
+}
+.no-suggestions {
+  padding: 8px;
+  color: #888;
+  font-style: italic;
+}

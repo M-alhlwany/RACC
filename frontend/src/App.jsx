@@ -5,6 +5,7 @@ import DeedsPage from './pages/DeedsPage.jsx';
 import OwnersPage from './pages/OwnersPage.jsx';
 import ContractsPage from './pages/ContractsPage.jsx';
 import PaymentsPage from './pages/PaymentsPage.jsx';
+import GISPage from './pages/GISPage.jsx';
 import Layout from './components/layout/Layout.jsx';
 
 const PrivateRoute = ({ children }) => {
@@ -83,6 +84,18 @@ export default function App() {
             )
           }
         />
+
+        <Route
+          path="/gis"
+          element={
+            <PrivateRoute>
+              <Layout>
+                <GISPage />
+              </Layout>
+            </PrivateRoute>
+          }
+        />
+
       </Routes>
     </BrowserRouter>
   );

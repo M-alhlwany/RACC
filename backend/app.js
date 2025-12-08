@@ -9,6 +9,8 @@ const deedRouter = require('./routes/deedRoutes');
 const contractRouter = require('./routes/contractRoutes');
 const recordRouter = require('./routes/recordRoutes');
 const paymentRouter = require('./routes/paymentRoutes');
+const gisRoutes = require("./routes/gisRoutes");
+const planRoutes = require("./routes/planRoutes");
 
 const userRouter = require('./routes/userRoutes');
 const AppError = require('./utils/AppError');
@@ -114,7 +116,8 @@ app.use('/api/v1/contracts', contractRouter);
 app.use('/api/v1/payments', paymentRouter);
 app.use('/api/v1/records', recordRouter);
 app.use('/api/v1/users', userRouter);
-
+app.use('/api/v1/gis',gisRoutes)
+app.use('/api/v1/plans', planRoutes);
 
 // أي Route غير موجود
 app.all('*', (req, res, next) => {
